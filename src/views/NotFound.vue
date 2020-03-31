@@ -1,6 +1,9 @@
 <template>
-  <div class="home">
-    <h1>This is homepage</h1>
+  <div>
+    <h1>Page not found</h1>
+    <div>
+      Return to <router-link :to="{name: 'home'}">home</router-link>.
+    </div>
   </div>
 </template>
 
