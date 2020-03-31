@@ -4,9 +4,9 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component
+@Component({})
 export default class FormView extends Vue {}
 </script>

@@ -2,14 +2,14 @@
   <div>
     <h1>Page not found</h1>
     <div>
-      Return to <router-link :to="{name: 'home'}">home</router-link>.
+      Return to <router-link :to="{name: 'list'}">home</router-link>.
     </div>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-@Component
+@Component({})
 export default class NotFoundView extends Vue {}
 </script>

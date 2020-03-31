@@ -1,13 +1,17 @@
 <template>
   <div class="page">
-    <h1>This is main layout</h1>
+    <VNav />
     <slot></slot>
   </div>
 </template>
 
-<script>
-  import { Component, Vue } from 'vue-property-decorator';
-
-  @Component
-  export default class MainLayout extends Vue {}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import VNav from '@/components/VNav.vue';
+@Component({
+  components: {
+    VNav,
+  },
+})
+export default class MainLayout extends Vue {}
 </script>

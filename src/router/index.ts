@@ -14,7 +14,10 @@ const routes = [
   {
     path: '/',
     name: 'list',
-    component: () => lazyLoad(import(/* webpackChunkName: "home" */ '@/views/ListView.vue')),
+    component: () => lazyLoad(import(/* webpackChunkName: "list" */ '@/views/ListView.vue')),
+    meta: {
+      hideFormLink: true,
+    },
   },
   {
     path: '/form',
