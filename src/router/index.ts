@@ -13,18 +13,18 @@ const lazyLoad = async (importView: Promise<EsModuleComponent>): Promise<Compone
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: () => lazyLoad(import(/* webpackChunkName: "home" */ '@/views/Home.vue')),
+    name: 'list',
+    component: () => lazyLoad(import(/* webpackChunkName: "home" */ '@/views/ListView.vue')),
   },
   {
-    path: '/about',
-    name: 'about',
-    component: () => lazyLoad(import(/* webpackChunkName: "about" */ '@/views/About.vue')),
+    path: '/form',
+    name: 'form',
+    component: () => lazyLoad(import(/* webpackChunkName: "about" */ '@/views/FormView.vue')),
   },
   {
     path: '/404',
     name: '404',
-    component: () => lazyLoad(import(/* webpackChunkName: "404" */ '@/views/NotFound.vue')),
+    component: () => lazyLoad(import(/* webpackChunkName: "404" */ '@/views/NotFoundView.vue')),
   },
   {
     path: '*',
