@@ -5,25 +5,32 @@
     :error="error"
   >
     <input
-      type="text"
+      type="number"
       :id="id"
       :name="name"
       :placeholder="placeholder"
       :value="value"
-      @change="$emit('change', $event.target.value)"
+      @change="onInputChange"
     />
   </VBasicInputWrapper>
 </template>
 
 <script lang="ts">
-  import { Component } from 'vue-property-decorator';
+  import { Component, Emit } from 'vue-property-decorator';
   import VBasicInputWrapper from '@/components/VBasicInputWrapper.vue';
   import BaseInput from '@/components/VBaseInput';
+  import toFixed from '@/filters/toFixed';
 
   @Component({
     components: {
       VBasicInputWrapper,
     },
   })
-  export default class TextInput extends BaseInput {}
+  export default class PriceInput extends BaseInput {
+    @Emit('change')
+    private onInputChange(event: InputEvent) {
+      const value = (event.target as HTMLInputElement).value;
+      return toFixed(value, 2);
+    }
+  }
 </script>

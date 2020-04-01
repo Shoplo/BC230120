@@ -30,7 +30,7 @@
       VInputError,
     },
   })
-  export default class BaseInput extends Vue {
+  export default class BasicInputWrapper extends Vue {
     @Prop({ required: true }) private readonly label!: string;
     @Prop({ default: null }) private readonly error!: string;
     @Prop({ required: true }) private readonly id!: string;

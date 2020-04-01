@@ -4,8 +4,7 @@
     :id="id"
     :error="error"
   >
-    <input
-      type="text"
+    <textarea
       :id="id"
       :name="name"
       :placeholder="placeholder"
@@ -25,5 +24,5 @@
       VBasicInputWrapper,
     },
   })
-  export default class TextInput extends BaseInput {}
+  export default class TextareaInput extends BaseInput {}
 </script>
