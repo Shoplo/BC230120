@@ -7,6 +7,7 @@
                  :label="field.label"
                  :name="field.name"
                  :value="fields[field.name].value"
+                 :options="field.options"
                  @blur="onFieldBlur(field.name)"
                  @change="onFieldChange(field.name, $event)"
                  @focus="onFieldFocus(field.name)"
@@ -24,12 +25,14 @@
   import VTextInput from '@/components/VTextInput.vue';
   import VTextareaInput from '@/components/VTextareaInput.vue';
   import VPriceInput from '@/components/VPriceInput.vue';
+  import VSingleSelectInput from '@/components/VSingleSelectInput.vue';
 
   @Component({
     components: {
       VTextInput,
       VTextareaInput,
       VPriceInput,
+      VSingleSelectInput,
     },
   })
   export default class VForm extends Vue {
@@ -38,11 +41,18 @@
 
     @Emit('submit')
     private onSubmit() {
+      this.validateAll();
       return this.fields;
     }
 
     private getFieldDataByName(fieldName: string) {
       return this.formData.fields.find((field: Field) => field.name === fieldName);
+    }
+
+    private validateAll() {
+      Object.keys(this.fields).forEach((fieldName: string): void => {
+        this.validateField(fieldName, this.fields[fieldName].value);
+      });
     }
 
     private validateField(fieldName: string, value: string) {

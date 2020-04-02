@@ -20,7 +20,8 @@ export default class FormView extends Vue {
   private productAddForm = productAddFormFactory();
 
   private onFormSubmit(formData: FieldsState) {
-    console.log(formData);
+    // Todo handle error
+    // Todo save data to store
   }
 }
 </script>

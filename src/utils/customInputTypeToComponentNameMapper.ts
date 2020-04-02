@@ -8,6 +8,8 @@ export default (fieldType: CustomInputType): string | null => {
       return 'VTextareaInput';
     case CustomInputType.PRICE:
       return 'VPriceInput';
+    case CustomInputType.SELECT:
+      return 'VSingleSelectInput';
     default:
       return null;
   }
