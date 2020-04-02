@@ -1,20 +1,20 @@
 <template>
-    <ul class="nav-list">
-      <li v-for="item in items" :key="item.text" class="nav-list__item">
-        <router-link :to="{ name: item.route }" class="nav-list__link">
-          {{ item.text }}
-        </router-link>
-      </li>
-    </ul>
+  <ul class="nav-list">
+    <li :key="item.text" class="nav-list__item" v-for="item in items">
+      <router-link :to="{ name: item.route }" class="nav-list__link">
+        {{ item.text }}
+      </router-link>
+    </li>
+  </ul>
 </template>
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
-import { NavItem } from '@/types';
+  import { Component, Prop, Vue } from 'vue-property-decorator';
+  import { NavItem } from '@/types';
 
-@Component({})
-export default class ListView extends Vue {
-  @Prop({ type: Array, required: true }) public readonly items!: NavItem[];
-}
+  @Component({})
+  export default class VNavList extends Vue {
+    @Prop({ type: Array, required: true }) public readonly items!: NavItem[];
+  }
 </script>
 
 <style lang="scss">

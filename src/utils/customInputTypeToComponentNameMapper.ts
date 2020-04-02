@@ -1,0 +1,14 @@
+import { CustomInputType } from '@/types';
+
+export default (fieldType: CustomInputType): string | null => {
+  switch (fieldType as CustomInputType) {
+    case CustomInputType.TEXT:
+      return 'VTextInput';
+    case CustomInputType.TEXTAREA:
+      return 'VTextareaInput';
+    case CustomInputType.PRICE:
+      return 'VPriceInput';
+    default:
+      return null;
+  }
+};

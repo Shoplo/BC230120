@@ -6,10 +6,10 @@
       </VInputLabel>
     </template>
     <template v-slot:input>
-      <slot />
+      <slot/>
     </template>
-    <template v-slot:error v-if="error">
-      <VInputError>
+    <template v-slot:error>
+      <VInputError v-if="error">
         {{ error }}
       </VInputError>
     </template>
@@ -30,7 +30,7 @@
       VInputError,
     },
   })
-  export default class BasicInputWrapper extends Vue {
+  export default class VBasicInputWrapper extends Vue {
     @Prop({ required: true }) private readonly label!: string;
     @Prop({ default: null }) private readonly error!: string;
     @Prop({ required: true }) private readonly id!: string;

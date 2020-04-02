@@ -25,8 +25,19 @@ export interface Field {
   options?: SelectOption[];
 }
 
+export interface FieldState {
+  value: string;
+  error: ValidatorMessage;
+}
+
+export interface FieldsState {
+  [key: string]: FieldState;
+}
+
 export interface Form {
   fields: Field[];
 }
 
-export type ValidatorType = (input: string) => string | null;
+export type ValidatorMessage = string | null;
+
+export type ValidatorType = (input: string) => ValidatorMessage;

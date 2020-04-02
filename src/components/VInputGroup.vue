@@ -16,7 +16,7 @@
   import { Component, Vue } from 'vue-property-decorator';
 
   @Component({})
-  export default class BaseInput extends Vue {
+  export default class VInputGroup extends Vue {
     private get hasLabel(): boolean {
       return Boolean(this.$slots.label);
     }

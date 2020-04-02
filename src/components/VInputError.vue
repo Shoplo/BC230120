@@ -8,5 +8,5 @@
   import { Component, Vue } from 'vue-property-decorator';
 
   @Component({})
-  export default class BaseInput extends Vue {}
+  export default class VInputError extends Vue {}
 </script>

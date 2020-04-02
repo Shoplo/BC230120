@@ -1,16 +1,18 @@
 <template>
   <VBasicInputWrapper
-    :label="label"
-    :id="id"
     :error="error"
+    :id="id"
+    :label="label"
   >
     <input
-      type="text"
       :id="id"
       :name="name"
       :placeholder="placeholder"
       :value="value"
+      @blur="$emit('blur')"
       @change="$emit('change', $event.target.value)"
+      @focus="$emit('focus')"
+      type="text"
     />
   </VBasicInputWrapper>
 </template>
@@ -25,5 +27,5 @@
       VBasicInputWrapper,
     },
   })
-  export default class TextInput extends BaseInput {}
+  export default class VTextInput extends BaseInput {}
 </script>

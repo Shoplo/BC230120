@@ -1,16 +1,18 @@
 <template>
   <VBasicInputWrapper
-    :label="label"
-    :id="id"
     :error="error"
+    :id="id"
+    :label="label"
   >
     <input
-      type="number"
       :id="id"
       :name="name"
       :placeholder="placeholder"
       :value="value"
+      @blur="$emit('blur')"
       @change="onInputChange"
+      @focus="$emit('focus')"
+      type="number"
     />
   </VBasicInputWrapper>
 </template>
@@ -26,10 +28,10 @@
       VBasicInputWrapper,
     },
   })
-  export default class PriceInput extends BaseInput {
+  export default class VPriceInput extends BaseInput {
     @Emit('change')
     private onInputChange(event: InputEvent) {
-      const value = (event.target as HTMLInputElement).value;
+      const value = (event.target as HTMLInputElement).value || 0;
       return toFixed(value, 2);
     }
   }
