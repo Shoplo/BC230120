@@ -30,7 +30,7 @@
   })
   export default class VPriceInput extends BaseInput {
     @Emit('change')
-    private onInputChange(event: InputEvent) {
+    private onInputChange(event: InputEvent): string {
       const value = (event.target as HTMLInputElement).value || 0;
       return toFixed(value, 2);
     }

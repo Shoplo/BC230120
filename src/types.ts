@@ -35,7 +35,16 @@ export interface FieldsState {
 }
 
 export interface Form {
-  fields: Field[];
+  fields: FieldsState;
+  isValid: boolean;
+}
+
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  category: string;
 }
 
 export type ValidatorMessage = string | null;

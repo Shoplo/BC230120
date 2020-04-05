@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <div :key="field.id" v-for="field in formData.fields">
+    <div :key="field.id" v-for="field in model">
       <component :error="fields[field.name].error"
                  :id="field.id"
                  :is="inputTypeToComponent(field.type)"
@@ -36,27 +36,42 @@
     },
   })
   export default class VForm extends Vue {
-    @Prop({ required: true }) private readonly formData!: Form;
+    @Prop({ required: true }) private readonly model!: Field[];
     private fields: FieldsState = {};
+    private isValid: boolean = false;
 
-    @Emit('submit')
-    private onSubmit() {
-      this.validateAll();
-      return this.fields;
-    }
-
-    private getFieldDataByName(fieldName: string) {
-      return this.formData.fields.find((field: Field) => field.name === fieldName);
-    }
-
-    private validateAll() {
+    public clear(): void {
       Object.keys(this.fields).forEach((fieldName: string): void => {
-        this.validateField(fieldName, this.fields[fieldName].value);
+        this.fields[fieldName].value = '';
       });
     }
 
-    private validateField(fieldName: string, value: string) {
-      const fieldData = this.getFieldDataByName(fieldName);
+    @Emit('submit')
+    private onSubmit(): Form {
+      this.validateAll();
+      return {
+        fields: this.fields,
+        isValid: this.isValid,
+      };
+    }
+
+    private getFieldDataByName(fieldName: string): Field | undefined {
+      return this.model.find((field: Field) => field.name === fieldName);
+    }
+
+    private validateAll(): void {
+      this.isValid = true;
+      Object.keys(this.fields).forEach((fieldName: string): void => {
+        const validationMessage: ValidatorMessage = this.validateField(fieldName, this.fields[fieldName].value);
+
+        if (validationMessage !== null) {
+          this.isValid = false;
+        }
+      });
+    }
+
+    private validateField(fieldName: string, value: string): ValidatorMessage {
+      const fieldData: Field | undefined = this.getFieldDataByName(fieldName);
       this.fields[fieldName].error = null;
 
       if (fieldData && fieldData.validators) {
@@ -67,26 +82,28 @@
           }
         }
       }
+
+      return this.fields[fieldName].error;
     }
 
     private inputTypeToComponent(fieldType: CustomInputType): string | null {
       return customInputTypeToComponentNameMapper(fieldType);
     }
 
-    private onFieldChange(fieldName: string, value: string) {
+    private onFieldChange(fieldName: string, value: string): void {
       this.fields[fieldName].value = value;
     }
 
-    private onFieldBlur(fieldName: string) {
+    private onFieldBlur(fieldName: string): void {
       this.validateField(fieldName, this.fields[fieldName].value);
     }
 
-    private onFieldFocus(fieldName: string) {
+    private onFieldFocus(fieldName: string): void {
       this.fields[fieldName].error = null;
     }
 
-    private created() {
-      this.fields = fieldsToFieldsState(this.formData.fields);
+    private created(): void {
+      this.fields = fieldsToFieldsState(this.model);
     }
   }
 </script>
