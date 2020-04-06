@@ -6,7 +6,7 @@
   import { Component, Prop, Vue } from 'vue-property-decorator';
   import VForm from '@/components/VForm.vue';
   import productFormModel from '@/forms/productForm';
-  import { Field, Form, InitialData, Product } from '@/types';
+  import { Field, Form, Product } from '@/types';
   import { namespace } from 'vuex-class';
   import productAddFormFieldsToProduct from '@/transformers/productAddFormFieldsToProduct';
 
@@ -17,7 +17,7 @@
       VForm,
     },
   })
-  export default class FormView extends Vue {
+  export default class VProductEditForm extends Vue {
     @Prop({ required: true }) private readonly initialProduct!: Product;
     private productFormModel: Field[] = productFormModel;
 

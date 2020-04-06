@@ -21,7 +21,12 @@ const routes = [
   },
   {
     path: '/form',
-    name: 'form',
+    name: 'addForm',
+    component: () => lazyLoad(import(/* webpackChunkName: "about" */ '@/views/FormView.vue')),
+  },
+  {
+    path: '/form/:id',
+    name: 'editForm',
     component: () => lazyLoad(import(/* webpackChunkName: "about" */ '@/views/FormView.vue')),
   },
   {

@@ -38,7 +38,7 @@ export default class ListView extends Vue {
   private products!: Product[];
 
   private onEditClick(productId: string) {
-    console.log(productId);
+    this.$router.push({ name: 'editForm', params: { id: productId } });
   }
 }
 </script>

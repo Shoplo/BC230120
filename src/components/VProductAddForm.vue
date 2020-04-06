@@ -18,7 +18,7 @@
       VForm,
     },
   })
-  export default class FormView extends Vue {
+  export default class VProductAddForm extends Vue {
     private productAddFormModel: Field[] = productFormModel;
     private initialProduct: InitialData = {};
 

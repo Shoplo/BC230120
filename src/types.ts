@@ -55,3 +55,4 @@ export interface Product {
 export type ValidatorMessage = string | null;
 
 export type ValidatorType = (input: string) => ValidatorMessage;
+export type ProductByIdGetter = (id: string) => Product | undefined;

@@ -17,7 +17,7 @@
       const items = [
         {
           text: 'Form',
-          route: 'form',
+          route: 'addForm',
         },
       ];
 
