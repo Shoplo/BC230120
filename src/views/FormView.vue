@@ -1,7 +1,7 @@
 <template>
   <div class="page-form">
     <h1>This is form page</h1>
-    <VProductAddForm @product-added="onProductAdded"/>
+    <VProductAddForm @form-submitted="onFormSubmitted"/>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import VProductAddForm from '@/components/VProductAddForm.vue';
   },
 })
 export default class FormView extends Vue {
-  private onProductAdded(): void {
+  private onFormSubmitted(): void {
     alert('product added');
   }
 }

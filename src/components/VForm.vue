@@ -19,13 +19,14 @@
 
 <script lang="ts">
   import { Component, Emit, Prop, Vue } from 'vue-property-decorator';
-  import fieldsToFieldsState from '@/utils/fieldsToFieldsState';
-  import customInputTypeToComponentNameMapper from '@/utils/customInputTypeToComponentNameMapper';
-  import { CustomInputType, Field, FieldsState, Form, ValidatorMessage } from '@/types';
+  import modelToFieldsState from '@/transformers/modelToFieldsState';
+  import customInputTypeToComponentNameMapper from '@/transformers/customInputTypeToComponentNameMapper';
+  import { CustomInputType, Field, FieldsState, Form, InitialData, ValidatorMessage } from '@/types';
   import VTextInput from '@/components/VTextInput.vue';
   import VTextareaInput from '@/components/VTextareaInput.vue';
   import VPriceInput from '@/components/VPriceInput.vue';
   import VSingleSelectInput from '@/components/VSingleSelectInput.vue';
+  import VHiddenInput from '@/components/VHiddenInput.vue';
 
   @Component({
     components: {
@@ -33,17 +34,17 @@
       VTextareaInput,
       VPriceInput,
       VSingleSelectInput,
+      VHiddenInput,
     },
   })
   export default class VForm extends Vue {
     @Prop({ required: true }) private readonly model!: Field[];
+    @Prop({ default: () => ({}) }) private readonly initialData!: InitialData;
     private fields: FieldsState = {};
     private isValid: boolean = false;
 
     public clear(): void {
-      Object.keys(this.fields).forEach((fieldName: string): void => {
-        this.fields[fieldName].value = '';
-      });
+      Vue.set(this, 'fields', modelToFieldsState(this.model, this.initialData));
     }
 
     @Emit('submit')
@@ -103,7 +104,7 @@
     }
 
     private created(): void {
-      this.fields = fieldsToFieldsState(this.model);
+      this.clear();
     }
   }
 </script>

@@ -4,6 +4,7 @@ export interface NavItem {
 }
 
 export enum CustomInputType {
+  HIDDEN,
   TEXT,
   TEXTAREA,
   PRICE,
@@ -28,6 +29,10 @@ export interface Field {
 export interface FieldState {
   value: string;
   error: ValidatorMessage;
+}
+
+export interface InitialData {
+  [key: string]: string;
 }
 
 export interface FieldsState {

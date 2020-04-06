@@ -3,8 +3,16 @@ import { CustomInputType, Field } from '@/types';
 
 export default Object.freeze([
   {
+    id: 'id',
+    name: 'id',
+    placeholder: '',
+    label: '',
+    validators: [],
+    type: CustomInputType.HIDDEN,
+  },
+  {
     id: 'name',
-    name: 'productName',
+    name: 'name',
     placeholder: 'Product name',
     label: 'Product name',
     validators: [isRequired],
@@ -12,7 +20,7 @@ export default Object.freeze([
   },
   {
     id: 'description',
-    name: 'productDescription',
+    name: 'description',
     placeholder: 'Product description',
     label: 'Product description',
     validators: [isRequired],
@@ -20,7 +28,7 @@ export default Object.freeze([
   },
   {
     id: 'price',
-    name: 'productPrice',
+    name: 'price',
     placeholder: 'Product price',
     label: 'Product price',
     validators: [isRequired],
@@ -28,7 +36,7 @@ export default Object.freeze([
   },
   {
     id: 'category',
-    name: 'productCategory',
+    name: 'category',
     placeholder: 'Product category',
     label: 'Product category',
     validators: [isRequired],

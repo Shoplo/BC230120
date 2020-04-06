@@ -13,6 +13,7 @@
       @change="onInputChange"
       @focus="$emit('focus')"
       type="number"
+      step="0.01"
     />
   </VBasicInputWrapper>
 </template>
