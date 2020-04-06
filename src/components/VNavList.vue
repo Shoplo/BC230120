@@ -18,6 +18,8 @@
 </script>
 
 <style lang="scss">
+  @import "@/style";
+
   .nav-list {
     display: flex;
     justify-content: center;
@@ -46,16 +48,16 @@
         top: 100%;
         left: 0;
         width: 100%;
-        height: 1px;
+        height: 2px;
         transform: scaleX(0);
-        background-color: #222222;
+        background-color: $color-main;
       }
 
       &:hover,
       &:focus,
       &:active {
         &:after {
-          transform: scaleX(0);
+          transform: scaleX(1);
         }
       }
     }

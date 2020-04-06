@@ -12,6 +12,7 @@
       @blur="$emit('blur')"
       @change="$emit('change', $event.target.value)"
       @focus="$emit('focus')"
+      class="input"
     >
       <option disabled value="">
         Please select
@@ -38,3 +39,10 @@
     @Prop({ required: true }) private readonly options!: SelectOption[];
   }
 </script>
+<style lang="scss">
+  @import "@/style";
+
+  .input {
+    @include input
+  }
+</style>

@@ -3,7 +3,7 @@
     <div class="input-group__label" v-if="hasLabel">
       <slot name="label"></slot>
     </div>
-    <div class="input-group__label">
+    <div class="input-group__content">
       <slot name="input"></slot>
     </div>
     <div class="input-group__error" v-if="hasError">
@@ -26,3 +26,26 @@
     }
   }
 </script>
+
+<style lang="scss">
+  @import "@/style";
+
+  .input-group {
+
+    & + & {
+      margin-top: size(1);
+    }
+
+    &__label {
+      margin-bottom: size(0.5);
+    }
+
+    &__content {
+
+    }
+
+    &__error {
+      margin-top: size(0.5);
+    }
+  }
+</style>

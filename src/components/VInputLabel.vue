@@ -1,5 +1,5 @@
 <template>
-  <label :for="htmlFor" class="input-for">
+  <label :for="htmlFor" class="input-label">
     <slot></slot>
   </label>
 </template>
@@ -12,3 +12,13 @@
     @Prop({ required: true }) private readonly htmlFor!: string;
   }
 </script>
+
+<style lang="scss">
+  .input-label {
+    font-size: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+</style>

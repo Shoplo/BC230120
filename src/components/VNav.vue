@@ -16,14 +16,14 @@
     get navList(): NavItem[] {
       const items = [
         {
-          text: 'Form',
+          text: 'Add new product',
           route: 'addForm',
         },
       ];
 
       if (!this.$route.meta.hideFormLink) {
         items.unshift({
-          text: 'List',
+          text: 'Products list',
           route: 'list',
         });
       }

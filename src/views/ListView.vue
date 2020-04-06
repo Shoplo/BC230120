@@ -1,28 +1,7 @@
 <template>
   <div class="page-list">
-    <h1>This is list page</h1>
-    <table>
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Category</th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-        <tr v-for="product in products" :key="product.id">
-          <td>{{ product.name }}</td>
-          <td>{{ product.description }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.category }}</td>
-          <td>
-            <button @click="onEditClick(product.id)">Edit</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <VPageTitle>Your product list</VPageTitle>
+    <VTable :elements="products" :headers="headers" :action="onEditClick" action-name="edit" />
   </div>
 </template>
 
@@ -30,15 +9,25 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { namespace } from 'vuex-class';
 import { Product } from '@/types';
+import VTable from '@/components/VTable.vue';
+import VPageTitle from '@/components/VPageTitle.vue';
+
 const products = namespace('Products');
 
-@Component({})
+@Component({
+  components: {
+    VTable,
+    VPageTitle,
+  },
+})
 export default class ListView extends Vue {
   @products.State
   private products!: Product[];
 
-  private onEditClick(productId: string) {
-    this.$router.push({ name: 'editForm', params: { id: productId } });
+  private headers: string[] = ['name', 'description', 'price', 'category'];
+
+  private onEditClick(product: Product) {
+    this.$router.push({ name: 'editForm', params: { id: product.id } });
   }
 }
 </script>

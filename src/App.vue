@@ -26,3 +26,20 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+  @import "~reset-css/sass/_reset.scss";
+  @import "@/style";
+  :root {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    color: $color-gray-deep-dark;
+    * {
+      &,
+      &:before,
+      &:after {
+        box-sizing: inherit;
+      }
+    }
+  }
+</style>

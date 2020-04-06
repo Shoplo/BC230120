@@ -14,6 +14,7 @@
       @focus="$emit('focus')"
       type="number"
       step="0.01"
+      class="input"
     />
   </VBasicInputWrapper>
 </template>
@@ -37,3 +38,10 @@
     }
   }
 </script>
+<style lang="scss">
+  @import "@/style";
+
+  .input {
+    @include input
+  }
+</style>

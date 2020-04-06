@@ -4,16 +4,17 @@
     :id="id"
     :label="label"
   >
-    <input
-      :id="id"
-      :name="name"
-      :placeholder="placeholder"
-      :value="value"
-      @blur="$emit('blur')"
-      @change="$emit('change', $event.target.value)"
-      @focus="$emit('focus')"
-      type="text"
-    />
+      <input
+        :id="id"
+        :name="name"
+        :placeholder="placeholder"
+        :value="value"
+        @blur="$emit('blur')"
+        @change="$emit('change', $event.target.value)"
+        @focus="$emit('focus')"
+        type="text"
+        class="input"
+      />
   </VBasicInputWrapper>
 </template>
 
@@ -29,3 +30,11 @@
   })
   export default class VTextInput extends BaseInput {}
 </script>
+
+<style lang="scss">
+  @import "@/style";
+
+  .input {
+    @include input
+  }
+</style>

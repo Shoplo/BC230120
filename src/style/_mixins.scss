@@ -1,0 +1,37 @@
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin input() {
+  transition: border-bottom-color 250ms ease-in-out;
+  display: block;
+  width: 100%;
+  padding: size(1);
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid $color-gray;
+  background: $color-gray-light;
+  resize: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &:hover {
+    border-bottom-color: $color-border;
+  }
+
+  &:focus,
+  &:active {
+    border-bottom-color: $color-main;
+    outline: none;
+  }
+}

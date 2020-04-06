@@ -10,3 +10,10 @@
   @Component({})
   export default class VInputError extends Vue {}
 </script>
+
+<style lang="scss">
+  .input-error {
+    color: red;
+    font-size: 12px;
+  }
+</style>

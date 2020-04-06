@@ -1,0 +1,19 @@
+$breakpoints: (
+  'small':  767px,
+  'medium': 992px,
+  'large':  1200px
+) !default;
+
+$size-base: 8px;
+
+$color-white: #ffffff;
+$color-black: #000000;
+$color-main: #3498db;
+
+$color-warning: #c0392b;
+
+$color-gray-light: #fcfcfc;
+$color-gray: #eeeeee;
+$color-gray-deep-dark: #121212;
+
+$color-border: #dddddd;

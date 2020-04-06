@@ -1,19 +1,24 @@
 <template>
-  <form @submit.prevent="onSubmit">
-    <div :key="field.id" v-for="field in model">
-      <component :error="fields[field.name].error"
-                 :id="field.id"
-                 :is="inputTypeToComponent(field.type)"
-                 :label="field.label"
-                 :name="field.name"
-                 :value="fields[field.name].value"
-                 :options="field.options"
-                 @blur="onFieldBlur(field.name)"
-                 @change="onFieldChange(field.name, $event)"
-                 @focus="onFieldFocus(field.name)"
+  <form class="form" @submit.prevent="onSubmit">
+    <div class="form__content">
+      <component
+        :key="field.id"
+        v-for="field in model"
+        :error="fields[field.name].error"
+        :id="field.id"
+        :is="inputTypeToComponent(field.type)"
+        :label="field.label"
+        :name="field.name"
+        :value="fields[field.name].value"
+        :options="field.options"
+        @blur="onFieldBlur(field.name)"
+        @change="onFieldChange(field.name, $event)"
+        @focus="onFieldFocus(field.name)"
       />
     </div>
-    <button type="submit">submit</button>
+    <div class="form__actions">
+      <VButton type="submit">submit</VButton>
+    </div>
   </form>
 </template>
 
@@ -27,6 +32,7 @@
   import VPriceInput from '@/components/VPriceInput.vue';
   import VSingleSelectInput from '@/components/VSingleSelectInput.vue';
   import VHiddenInput from '@/components/VHiddenInput.vue';
+  import VButton from '@/components/VButton.vue';
 
   @Component({
     components: {
@@ -35,6 +41,7 @@
       VPriceInput,
       VSingleSelectInput,
       VHiddenInput,
+      VButton,
     },
   })
   export default class VForm extends Vue {
@@ -108,3 +115,17 @@
     }
   }
 </script>
+<style lang="scss">
+  @import "@/style";
+
+  .form {
+    &__content {
+      margin-bottom: size(2);
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+</style>

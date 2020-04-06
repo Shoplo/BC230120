@@ -1,15 +1,20 @@
 <template>
   <div class="page-form">
-    <h1>This is form page</h1>
-    <VProductEditForm
-      @form-submitted="onFormSubmitted"
-      :initial-product="this.product"
-      v-if="isEdit"
-    />
-    <VProductAddForm
-      @form-submitted="onFormSubmitted"
-      v-else
-    />
+    <VPageTitle>
+      {{ pageTitle }}
+    </VPageTitle>
+
+    <div class="page-form__content">
+      <VProductEditForm
+        @form-submitted="onFormSubmitted"
+        :initial-product="this.product"
+        v-if="isEdit"
+      />
+      <VProductAddForm
+        @form-submitted="onFormSubmitted"
+        v-else
+      />
+    </div>
   </div>
 </template>
 
@@ -17,6 +22,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import VProductAddForm from '@/components/VProductAddForm.vue';
 import VProductEditForm from '@/components/VProductEditForm.vue';
+import VPageTitle from '@/components/VPageTitle.vue';
 import { Product, ProductByIdGetter } from '@/types';
 import { namespace } from 'vuex-class';
 
@@ -26,6 +32,7 @@ const products = namespace('Products');
   components: {
     VProductAddForm,
     VProductEditForm,
+    VPageTitle,
   },
 })
 export default class FormView extends Vue {
@@ -43,8 +50,25 @@ export default class FormView extends Vue {
     return false;
   }
 
+  private get pageTitle(): string {
+    if (this.isEdit) {
+      // @ts-ignore
+      return `Edit ${this.product.name} product`;
+    }
+
+    return 'Add new product';
+  }
+
   private onFormSubmitted(): void {
     this.$router.push({ name: 'list' });
   }
 }
 </script>
+
+<style lang="scss">
+  .page-form {
+    &__content {
+      max-width: 480px;
+    }
+  }
+</style>

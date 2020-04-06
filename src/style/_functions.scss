@@ -1,0 +1,3 @@
+@function size($multiplier: 1, $base: $size-base) {
+  @return $multiplier * $base;
+}
