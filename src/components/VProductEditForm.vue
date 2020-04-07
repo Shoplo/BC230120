@@ -8,7 +8,7 @@
   import productFormModel from '@/forms/productForm';
   import { Field, Form, Product } from '@/types';
   import { namespace } from 'vuex-class';
-  import productAddFormFieldsToProduct from '@/transformers/productAddFormFieldsToProduct';
+  import productAddFormFieldsToProduct from '@/transformers/productFormFieldsToProduct';
 
   const products = namespace('Products');
 

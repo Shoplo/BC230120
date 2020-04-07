@@ -8,12 +8,14 @@ export default class Uuid {
   }
 
   private static instance: Uuid;
-  private lastId = 0;
+  private lastNumber = 0;
 
   private constructor() {}
 
   public getUuid(): string {
-    this.lastId = this.lastId + 1;
-    return this.lastId.toString();
+    // Poor man's non RFC Uuid implementation
+    this.lastNumber = this.lastNumber + 1;
+    const timestamp = new Date().getTime();
+    return this.lastNumber.toString() + timestamp;
   }
 }

@@ -8,7 +8,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr class="table__row" v-for="element in elements" :key="element.toString()">
+        <tr class="table__row" v-for="element in elements" :key="element.id">
           <td class="table__cell" v-for="header in headers" :key="header">
             {{ element[header] }}
           </td>

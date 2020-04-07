@@ -1,3 +1,5 @@
+import Products from '@/store/modules/products';
+
 export interface NavItem {
   text: string;
   route: string;
@@ -44,11 +46,15 @@ export interface Form {
   isValid: boolean;
 }
 
+export interface ProductsStore {
+  products: Products[];
+}
+
 export interface Product {
   id: string;
   name: string;
   description: string;
-  price: number;
+  price: string;
   category: string;
 }
 
